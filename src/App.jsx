@@ -38,6 +38,7 @@ export default function App() {
   const [data, setData] = useState({ profile: null, skills: [], education: [], projects: [], certificates: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [profileImageFailed, setProfileImageFailed] = useState(false);
   const [page, setPage] = useState(getPageFromHash);
 
   async function loadPortfolio() {
@@ -98,7 +99,12 @@ export default function App() {
               {profile?.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
             </div>
           </div>
-          <div className="hero-art" aria-hidden="true"><div className="hero-monogram">{(profile?.full_name || "Pfumelani").trim().charAt(0).toUpperCase()}</div><span className="art-caption">LEARN · BUILD · GROW</span></div>
+          <div className={`hero-art${profile?.profile_image && !profileImageFailed ? " has-profile-image" : ""}`}>
+            {profile?.profile_image && !profileImageFailed
+              ? <img className="hero-profile-image" src={profile.profile_image} alt={`${displayName} profile`} onError={() => setProfileImageFailed(true)} />
+              : <div className="hero-monogram" aria-hidden="true">{displayName.trim().charAt(0).toUpperCase()}</div>}
+            <span className="art-caption">LEARN · BUILD · GROW</span>
+          </div>
         </section>}
 
         {page === "about" && <section className="section-wrap section-block">
