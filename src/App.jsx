@@ -7,10 +7,10 @@ const sections = [
 ];
 
 function Header({ profile }) {
-  const name = profile?.full_name || "Portfolio";
+  const name = profile?.full_name || "Pfumelani Rikhotso";
   return <header className="site-header">
     <a className="brand" href="#home" aria-label="Go to home">
-      <span className="brand-mark">P</span>
+      <span className="brand-mark">PR</span>
       <span><strong>{name}</strong><small>{profile?.professional_title || "Software Development Portfolio"}</small></span>
     </a>
     <nav aria-label="Main navigation">
@@ -53,7 +53,7 @@ export default function App() {
   useEffect(() => { loadPortfolio(); }, []);
 
   const { profile, skills, education, projects, certificates } = data;
-  const displayName = profile?.full_name || "Portfolio owner";
+  const displayName = profile?.full_name || "Pfumelani Rikhotso";
   const skillGroups = skills.reduce((groups, skill) => {
     const category = skill.category || "Other";
     (groups[category] ||= []).push(skill);
@@ -70,9 +70,9 @@ export default function App() {
       {loading ? <div className="page-loader"><Loading /></div> : <>
         <section id="home" className="hero section-wrap">
           <div className="hero-copy">
-            <span className="eyebrow">WELCOME TO MY PORTFOLIO</span>
-            <h1>{profile?.full_name || "Building useful digital experiences."}</h1>
-            <h2>{profile?.professional_title || "Software Development & Information Technology"}</h2>
+            <span className="eyebrow">SOFTWARE DEVELOPER <span aria-hidden="true">·</span> IT PROFESSIONAL</span>
+            <h1>{profile?.full_name || "Pfumelani Rikhotso"}</h1>
+            <h2>{profile?.professional_title || "Junior Software Developer | IT Graduate"}</h2>
             <p>{profile?.biography || "Explore my skills, education and selected projects below."}</p>
             <div className="hero-actions">
               <a className="button" href="#projects">Explore projects <span aria-hidden="true">↗</span></a>
@@ -83,7 +83,7 @@ export default function App() {
               {profile?.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
             </div>
           </div>
-          <div className="hero-art" aria-hidden="true"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="hero-monogram">{(profile?.full_name || "P").trim().charAt(0).toUpperCase()}</div><span className="art-caption">LEARN · BUILD · GROW</span></div>
+          <div className="hero-art" aria-hidden="true"><div className="hero-monogram">{(profile?.full_name || "Pfumelani").trim().charAt(0).toUpperCase()}</div><span className="art-caption">LEARN · BUILD · GROW</span></div>
         </section>
 
         <section id="about" className="section-wrap section-block">
