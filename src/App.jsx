@@ -83,7 +83,7 @@ export default function App() {
               {profile?.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
             </div>
           </div>
-          <div className="hero-art" aria-hidden="true"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="hero-monogram">{(profile?.full_name || "P").trim().charAt(0).toUpperCase()}</div><span className="art-caption">LEARN · BUILD · GROW</span></div>
+          <div className="hero-portrait"><img src="/images/pfumelani-developer.jpg" alt="Pfumelani working at a laptop in a modern software development workspace" /><span className="art-caption">LEARN · BUILD · GROW</span></div>
         </section>
 
         <section id="about" className="section-wrap section-block">
