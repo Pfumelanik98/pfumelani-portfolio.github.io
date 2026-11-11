@@ -11,7 +11,7 @@ React + Vite frontend for the Django REST Framework portfolio API.
 5. Start the Django backend, then run `npm run dev`.
 6. Open the Vite URL shown in the terminal.
 
-The frontend reads profile, skills, education, projects and certificates from the API. It does not contain portfolio records as hard-coded data. Empty states are shown until content is published in Django.
+The frontend reads profile, skills, education, projects and certificates from the API. Public contact details are maintained in the React app and shown on its Contact page. Empty states are shown until API content is published in Django.
 
 ## Deployment
 

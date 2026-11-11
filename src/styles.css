@@ -299,6 +299,35 @@ a { color: inherit; }
 .certificate-card p, .certificate-card small { display: block; margin: 5px 0; color: var(--muted); }
 .certificate-card a { display: inline-block; margin-top: 12px; }
 
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: var(--max);
+}
+
+.contact-card {
+  min-width: 0;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.contact-card:hover, .contact-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px #202a260d;
+}
+
+.contact-label { color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.contact-value { overflow-wrap: anywhere; color: var(--ink); font-size: 15px; font-weight: 700; }
+.contact-action { color: var(--muted); font-size: 11px; }
+
 .empty-state, .state-card {
   padding: 22px;
   border: 1px dashed #c9ddda;
@@ -350,7 +379,7 @@ a { color: inherit; }
   .site-header nav a { padding: 8px 9px; font-size: 11px; }
   .hero { grid-template-columns: 1fr; gap: 36px; padding-block: 56px; }
   .hero-art { height: 280px; max-width: 440px; width: 100%; margin-inline: auto; }
-  .skill-groups, .project-grid, .certificate-grid { grid-template-columns: 1fr; }
+  .skill-groups, .project-grid, .certificate-grid, .contact-grid { grid-template-columns: 1fr; }
   .section-block { padding-block: 55px; }
   .site-footer { align-items: flex-start; flex-direction: column; }
 }

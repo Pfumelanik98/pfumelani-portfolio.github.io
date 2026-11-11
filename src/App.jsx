@@ -4,6 +4,13 @@ import { API_BASE, getList, getProfile } from "./api";
 const sections = [
   ["home", "Home"], ["about", "About"], ["skills", "Skills"],
   ["education", "Education"], ["projects", "Projects"], ["certificates", "Certificates"],
+  ["contact", "Contact"],
+];
+
+const contactDetails = [
+  { label: "Email", value: "pfumelanik98@gmail.com", href: "mailto:pfumelanik98@gmail.com" },
+  { label: "Phone", value: "+27 60 642 4990", href: "tel:+276064249990" },
+  { label: "LinkedIn", value: "linkedin.com/in/pfumelani-rikhotso", href: "https://www.linkedin.com/in/pfumelani-rikhotso", external: true },
 ];
 
 function getPageFromHash() {
@@ -160,6 +167,19 @@ export default function App() {
           {certificates.length ? <div className="certificate-grid">{certificates.map(cert =>
             <article className="content-card certificate-card" key={cert.id}><span className="certificate-icon">✳</span><div><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.issue_date && <small>{cert.issue_date}</small>}{cert.credential_url && <a href={cert.credential_url} target="_blank" rel="noreferrer">View credential ↗</a>}</div></article>
           )}</div> : <Empty>Certificates will appear here after their details have been confirmed and published.</Empty>}
+        </section>}
+
+        {page === "contact" && <section className="section-wrap section-block">
+          <SectionHeading eyebrow="LET'S CONNECT" title="Get in touch" text="Reach out by email or phone, or connect with me on LinkedIn." />
+          <div className="contact-grid">
+            {contactDetails.map(({ label, value, href, external }) =>
+              <a className="contact-card" key={label} href={href} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>
+                <span className="contact-label">{label}</span>
+                <span className="contact-value">{value}</span>
+                {external && <span className="contact-action">View profile ↗</span>}
+              </a>
+            )}
+          </div>
         </section>}
       </>}
     </main>
