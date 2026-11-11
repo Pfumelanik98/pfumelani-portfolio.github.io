@@ -1,0 +1,18 @@
+name: React portfolio build
+on:
+  push:
+    branches: ["feature/react-api-integration"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+        env:
+          VITE_API_BASE_URL: http://127.0.0.1:8000/api/v1
