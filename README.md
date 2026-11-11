@@ -17,4 +17,4 @@ The frontend reads profile, skills, education, projects and certificates from th
 
 Set `VITE_API_BASE_URL` to the deployed HTTPS Django API base URL before building. The Django deployment must allow the exact frontend origin in `CORS_ALLOWED_ORIGINS`. The local loopback API address is for local development only.
 
-The CV is intentionally not linked or included in this React application. Review the existing public PDF in the repository separately before making the repository public again.
+The CV is intentionally not linked or included in this React application. A previously published PDF was removed from the current source, but remains in Git history. Removing historic copies requires rewriting repository history and coordinating with anyone who has cloned it.
