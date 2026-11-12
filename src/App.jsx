@@ -29,6 +29,13 @@ function Loading({ label = "Loading portfolio data…" }) {
 
 function Empty({ children }) { return <div className="empty-state">{children}</div>; }
 
+function formatCertificateDate(date) {
+  if (!date) return "";
+  const [year, month, day] = date.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-ZA", { month: "short", year: "numeric", timeZone: "UTC" })
+    .format(new Date(Date.UTC(year, month - 1, day)));
+}
+
 export default function App() {
   const [data, setData] = useState({ profile: null, skills: [], education: [], projects: [], certificates: [] });
   const [loading, setLoading] = useState(true);
@@ -137,7 +144,7 @@ export default function App() {
         <section id="certificates" className="section-wrap section-block">
           <SectionHeading eyebrow="CONTINUOUS LEARNING" title="Certificates" />
           {certificates.length ? <div className="certificate-grid">{certificates.map(cert =>
-            <article className="content-card certificate-card" key={cert.id}><span className="certificate-icon">✳</span><div><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.issue_date && <small>{cert.issue_date}</small>}{cert.credential_url && <a href={cert.credential_url} target="_blank" rel="noreferrer">View credential ↗</a>}</div></article>
+            <article className="content-card certificate-card" key={cert.id}><span className="certificate-icon">✳</span><div><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.issue_date && <small>Issued {formatCertificateDate(cert.issue_date)}</small>}{cert.expiration_date && <small>Expires {formatCertificateDate(cert.expiration_date)}</small>}{cert.credential_id && <small>Credential ID: {cert.credential_id}</small>}{cert.skills?.length > 0 && <div className="tag-list">{cert.skills.map(skill => <span className="tag" key={skill}>{skill}</span>)}</div>}{cert.credential_url && <a href={cert.credential_url} target="_blank" rel="noreferrer">View credential ↗</a>}</div></article>
           )}</div> : <Empty>Certificates will appear here after their details have been confirmed and published.</Empty>}
         </section>
       </>}
